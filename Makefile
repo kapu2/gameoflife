@@ -1,8 +1,9 @@
 #------------------------------------------------------------------------------
 
-SOURCE=main.cpp main.h Board.cpp Board.h
+SOURCE=main.cpp main.h Board.cpp Board.h Life.cpp Life.h
 MYPROGRAM=gameoflife
 MYINCLUDES=~
+FLAGS=-pedantic -Wall -g -ggdb
 
 CC=g++
 
@@ -16,7 +17,7 @@ all: $(MYPROGRAM)
 
 $(MYPROGRAM): $(SOURCE)
 
-	$(CC) -I$(MYINCLUDES) $(SOURCE) -o$(MYPROGRAM)
+	$(CC) $(FLAGS) -I$(MYINCLUDES) $(SOURCE) -o$(MYPROGRAM)
 
 clean:
 

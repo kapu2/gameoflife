@@ -4,6 +4,8 @@ Life::Life( int x, int y )
 {
     x_coord = x;
     y_coord = y;
+    neighbours = 0;
+    alive = 0;
 }
 
 Life::~Life()
@@ -22,8 +24,22 @@ int Life::GetYLocation()
 
 void Life::CheckAliveStatus()
 {
+    if ( ( neighbours > 1 ) || ( neighbours < 4 ) )
+    {
+        alive = 1;
+    }
+    else
+    {
+        alive = 0;
+    }
+}
+
+void Life::CheckAliveStatus( bool initial_alive_status )
+{
+    alive = initial_alive_status;
 }
 
 bool Life::GetAliveStatus()
 {
+    return alive;
 }
