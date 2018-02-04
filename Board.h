@@ -3,8 +3,8 @@
 #include <vector>
 #include <iterator>
 #include <iostream>
-#define WIDTH 20
-#define HEIGHT 20
+#define WIDTH 50
+#define HEIGHT 40
 
 #ifndef BOARD_H
 #define BOARD_H

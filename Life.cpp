@@ -1,4 +1,5 @@
 #include "Life.h"
+#include <iostream>
 
 Life::Life( int x, int y )
 {

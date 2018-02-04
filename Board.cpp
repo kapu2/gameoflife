@@ -22,7 +22,14 @@ Board::Board()
 
 Board::~Board()
 {
-    // TODO: memory will be not freed for objects
+    // TODO Leaking memory
+    for ( int y = 0; y < HEIGHT; ++y ) 
+    {
+        for ( int x =0; x < WIDTH; ++x )
+        {
+            delete &(lives[y][x]);
+        }
+    }
 }
 
 bool Board::Draw()
@@ -40,7 +47,6 @@ bool Board::Draw()
             {
                 std::cout << "_";
             }
-            //std::cout << column->GetNeighbourAmount();
         }
         std::cout << "\n";
     }
@@ -71,21 +77,45 @@ void Board::CalculateNeighbours()
    {
         for ( int x = 0; x < WIDTH; ++x )
         {
+            // Not bottom
             if ( y != HEIGHT - 1 )
             {
                 lives[y + 1][x].SetNeighbourAmount( lives[y + 1][x].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
             }
+            // Not top
             if ( y != 0 )
             {
                 lives[y - 1][x].SetNeighbourAmount( lives[y - 1 ][x].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
             }
+            // Not right edge
             if ( x != WIDTH - 1 )
             {
                 lives[y][x + 1].SetNeighbourAmount( lives[y][x + 1].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
             }
+            // Not left edge
             if ( x != 0 )
             {
                 lives[y][x - 1].SetNeighbourAmount( lives[y][x - 1].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
+            }
+            // Not upper left corner
+            if ( ( x != 0 ) && ( y != 0 ) ) 
+            {
+                lives[y - 1][x - 1].SetNeighbourAmount( lives[y - 1][x - 1].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
+            }
+            // Not upper right corner
+            if ( ( x != WIDTH -1 ) && ( y != 0 ) )
+            {
+                lives[y - 1][x + 1].SetNeighbourAmount( lives[y - 1][x + 1].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
+            }
+            // Not bottom right corner
+            if ( ( x != WIDTH -1 ) && ( y != HEIGHT - 1 ) )
+            {
+                lives[y + 1][x + 1].SetNeighbourAmount( lives[y + 1][x + 1].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
+            }
+            // Not bottom left corner
+            if ( ( x != 0 ) && ( y != HEIGHT - 1 ) )
+            {
+                lives[y + 1][x - 1].SetNeighbourAmount( lives[y + 1][x - 1].GetNeighbourAmount() + lives[y][x].GetAliveStatus() );
             }
         }
    }
