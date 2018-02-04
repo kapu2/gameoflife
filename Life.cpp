@@ -24,7 +24,11 @@ int Life::GetYLocation()
 
 void Life::CheckAliveStatus()
 {
-    if ( ( neighbours > 1 ) || ( neighbours < 4 ) )
+    if ( ( neighbours == 2 ) && ( alive ) )
+    {
+        // Do nothing
+    }
+    else if ( neighbours == 3 )
     {
         alive = 1;
     }
@@ -32,6 +36,16 @@ void Life::CheckAliveStatus()
     {
         alive = 0;
     }
+}
+
+void Life::SetNeighbourAmount( int neighbour_amount )
+{
+    neighbours = neighbour_amount;
+}
+
+int Life::GetNeighbourAmount()
+{
+    return neighbours;
 }
 
 void Life::CheckAliveStatus( bool initial_alive_status )

@@ -10,6 +10,8 @@ class Life
         void CheckAliveStatus();
         void CheckAliveStatus( bool initial_alive_status );
         bool GetAliveStatus();
+        void SetNeighbourAmount( int neighbour_amount );
+        int GetNeighbourAmount();
     private:
         int x_coord;
         int y_coord;

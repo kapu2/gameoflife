@@ -19,5 +19,6 @@ class Board
         bool Draw();
         void SetAliveOnCoordinates( int x, int y );
         void SetNewAliveStatuses();
+        void CalculateNeighbours();
 };
 #endif
