@@ -4,8 +4,9 @@
 #include <iterator>
 #include <iostream>
 
-
-int main() {
+#define MAX_STEPS 100
+int main ()
+{
     Board board;
     board.SetAliveOnCoordinates( 2, 6 );
     board.SetAliveOnCoordinates( 2, 7 );
@@ -45,8 +46,8 @@ int main() {
     board.SetAliveOnCoordinates( 37, 5 );
     std::cout << "Begin by pressing enter\n";
 
-
-    for ( int i = 0; i < 15; i++ ) 
+    
+    for ( int i = 0; i < MAX_STEPS; i++ ) 
     {
         system( "sleep 1" );
         board.Draw ();
@@ -55,4 +56,3 @@ int main() {
     }
     return 0;
 }
-

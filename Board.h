@@ -1,8 +1,8 @@
-#include "Life.h"
 #include <cstdlib>
 #include <vector>
 #include <iterator>
 #include <iostream>
+#include "Life.h"
 #define WIDTH 50
 #define HEIGHT 40
 
@@ -11,7 +11,7 @@
 class Board
 {
     private:
-        std::vector< std::vector<Life> > lives;
+        std::vector< std::vector<Life*> > lives;
 
     public:
         Board();
